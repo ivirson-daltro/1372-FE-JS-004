@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" id="btn-download">Baixar Arquivo</button>
+
+    <script>
+      const button = document.getElementById("btn-download");
+      // montar o conteúdo do arquivo
+      const alunos = [
+        { nome: "Tales Honorio" },
+        { nome: "Edvaldo Oliveira" },
+        { nome: "Mirra Bernardo" },
+      ];
+
+      button.addEventListener("click", () => {
+        // construir o arquivo json, usando o a lista de alunos
+        // criar um blob
+        const blob = new Blob([JSON.stringify(alunos)], {
+          type: "application/json",
+        });
+        // criar um link para download
+        const link = document.createElement("a");
+        // setar a url do link, ou o href
+        link.href = URL.createObjectURL(blob);
+        // nomear o arquivo
+        link.download = "alunos.json";
+        // clicar no link
+        link.click();
+      });
+    </script>
+  </body>
+</html>
