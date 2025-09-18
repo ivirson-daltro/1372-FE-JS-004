@@ -48,3 +48,4 @@ async function remove(id) {
     .then(() => console.log("Product deleted successfully"))
     .catch((error) => console.error("Error deleting product:", error));
 }
+
